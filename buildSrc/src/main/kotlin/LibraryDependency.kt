@@ -58,7 +58,7 @@ object LibraryDependency {
         const val RETROFIT_2 = "2.9.0"
         const val COROUTINES = "1.4.2"
         const val CORE_KTX = "1.6.0"
-        const val DAGGER_HILT = "2.35"
+        const val DAGGER_HILT = "2.38.1"
 
         //Android
         const val APPCOMPAT = "1.3.0"
