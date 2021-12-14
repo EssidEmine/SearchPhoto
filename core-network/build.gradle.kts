@@ -9,12 +9,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion(projectconfig.AndroidConfig.COMPILE_SDK_VERSION)
-    buildToolsVersion(Versions.ANDROID_BUILD_TOOLS_VERSION)
+    compileSdk = projectconfig.AndroidConfig.COMPILE_SDK_VERSION
+    buildToolsVersion = Versions.ANDROID_BUILD_TOOLS_VERSION
 
     defaultConfig {
-        minSdkVersion(projectconfig.AndroidConfig.MIN_SDK_VERSION)
-        targetSdkVersion(projectconfig.AndroidConfig.TARGET_SDK_VERSION)
+        minSdk = projectconfig.AndroidConfig.MIN_SDK_VERSION
+        targetSdk = projectconfig.AndroidConfig.TARGET_SDK_VERSION
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
