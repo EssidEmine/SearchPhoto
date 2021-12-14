@@ -28,6 +28,10 @@ android {
         }
     }
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -52,20 +56,30 @@ tasks.withType<KotlinCompile> {
 }
 
 dependencies {
-
     implementation(LibraryDependency.kotlinStdlib)
     implementation(LibraryDependency.kotlinCoroutines)
     implementation(LibraryDependency.kotlinCoroutinesAndroid)
-
     implementation(LibraryDependency.Network.retrofit2)
-    implementation(LibraryDependency.Network.gsonConverter)
+
+    implementation(LibraryDependency.roomRuntime)
+    implementation(LibraryDependency.roomKtx)
+    kapt(LibraryDependency.roomCompiler)
 
     implementation(LibraryDependency.daggerHilt)
     kapt(LibraryDependency.daggerHiltCompiler)
 
+    testImplementation(LibraryDependency.Test.junit)
+    testImplementation(LibraryDependency.Test.assertjCore)
+    testImplementation(LibraryDependency.Test.mockk)
+    testImplementation(LibraryDependency.Test.mockkAndroid)
+    androidTestImplementation(LibraryDependency.Test.junitExt)
+
     // region Projects implementation
 
+    implementation(project(Modules.Repository.network))
     implementation(project(Modules.Model))
 
-// endregion
+    // endregion
+
+
 }
