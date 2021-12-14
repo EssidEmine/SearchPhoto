@@ -26,6 +26,7 @@ object LibraryDependency {
     const val activityKtx = "androidx.activity:activity-ktx:${Version.ACTIVITY_KTX}"
     const val recyclerview = "androidx.recyclerview:recyclerview:${Version.RECYCLERVIEW}"
     const val picasso = "com.squareup.picasso:picasso:${Version.PICASSO}"
+    const val fragmentKtx = "androidx.fragment:fragment-ktx:${Version.FRAGMENT_KTX}"
 
     object Network {
         const val retrofit2 = "com.squareup.retrofit2:retrofit:${Version.RETROFIT_2}"
@@ -34,6 +35,8 @@ object LibraryDependency {
 
     object Test {
         const val junit = "junit:junit:${Version.JUNIT}"
+        const val junitParams = "pl.pragmatists:JUnitParams:${Version.JUNIT_PARAMS}"
+
         const val junitExt = "androidx.test.ext:junit:${Version.JUNIT_EXT}"
         const val espresso = "androidx.test.espresso:espresso-core:${Version.ESPRESSO_CORE}"
         const val assertjCore = "org.assertj:assertj-core:${Version.ASSERTJ}"
@@ -49,8 +52,6 @@ object LibraryDependency {
         const val process = "androidx.lifecycle:lifecycle-process:${Version.LIFECYCLE}"
         const val annotations = "androidx.lifecycle:lifecycle-compiler:${Version.LIFECYCLE}"
         const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.LIFECYCLE}"
-        const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Version.LIFECYCLE}"
-        const val java8 = "androidx.lifecycle:lifecycle-common-java8:${Version.LIFECYCLE}"
         const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.LIFECYCLE}"
     }
 
@@ -69,9 +70,12 @@ object LibraryDependency {
         const val ACTIVITY_KTX = "1.2.3"
         const val RECYCLERVIEW = "1.1.0"
         const val PICASSO = "2.71828"
+        const val FRAGMENT_KTX = "1.2.5"
+
 
         //Test
         const val JUNIT = "4.13.2"
+        const val JUNIT_PARAMS = "1.1.1"
         const val JUNIT_EXT = "1.1.3"
         const val ESPRESSO_CORE = "3.4.0"
         const val ASSERTJ = "3.19.0"
