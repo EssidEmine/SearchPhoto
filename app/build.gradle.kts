@@ -56,6 +56,7 @@ dependencies {
     implementation(LibraryDependency.design)
     implementation(LibraryDependency.constraintlayout)
     implementation(LibraryDependency.activityKtx)
+    implementation (LibraryDependency.fragmentKtx)
     implementation(LibraryDependency.recyclerview)
     implementation(LibraryDependency.picasso)
     implementation(LibraryDependency.Network.retrofit2)
@@ -63,8 +64,10 @@ dependencies {
 
     implementation(LibraryDependency.roomRuntime)
     implementation(LibraryDependency.roomKtx)
-    implementation (LibraryDependency.fragmentKtx)
     kapt(LibraryDependency.roomCompiler)
+
+    implementation (LibraryDependency.fragmentNavKtx)
+    implementation(LibraryDependency.navigation)
 
     implementation(LibraryDependency.daggerHilt)
     kapt(LibraryDependency.daggerHiltCompiler)

@@ -1,4 +1,4 @@
-package com.example.searchphoto
+package com.example.searchphoto.ui.base
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
