@@ -7,6 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import repository.SearchPhotosRepository
 import repository.SearchPhotosRepositoryImpl
+import room.PhotosDao
 import service.RetrofitConsultationService
 import javax.inject.Singleton
 
@@ -17,8 +18,9 @@ object SearchPhotosRepositoryModule {
     @Singleton
     @Provides
     fun providePictureRepository(
-        consultationService: RetrofitConsultationService
+        consultationService: RetrofitConsultationService,
+        photosPDao: PhotosDao
     ): SearchPhotosRepository {
-        return SearchPhotosRepositoryImpl(consultationService)
+        return SearchPhotosRepositoryImpl(consultationService, photosPDao)
     }
 }
