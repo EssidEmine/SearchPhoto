@@ -81,6 +81,7 @@ dependencies {
     testImplementation(LibraryDependency.Test.mockkAndroid)
     testImplementation(LibraryDependency.Test.assertjCore)
     testImplementation(LibraryDependency.Test.kotlinCoroutinesTest)
+    testImplementation (LibraryDependency.Test.kotlinCoroutinesTurbineTest)
 
     // region Projects implementation
 

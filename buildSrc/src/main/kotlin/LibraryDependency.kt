@@ -9,6 +9,7 @@ object LibraryDependency {
     const val kotlinCoroutinesAndroid =
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.COROUTINES}"
 
+
     // Android
 
     const val coreKtx = "androidx.core:core-ktx:${Version.CORE_KTX}"
@@ -48,6 +49,7 @@ object LibraryDependency {
         const val archCoreTesting = "androidx.arch.core:core-testing:${Version.ARCHCORE}"
         const val kotlinCoroutinesTest =
             "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.COROUTINES}"
+        const val kotlinCoroutinesTurbineTest = "app.cash.turbine:turbine:${Version.TURBINE}"
     }
 
     object LifeCycle {
@@ -59,7 +61,7 @@ object LibraryDependency {
 
     private object Version {
         const val RETROFIT_2 = "2.9.0"
-        const val COROUTINES = "1.4.2"
+        const val COROUTINES = "1.5.1"
         const val CORE_KTX = "1.6.0"
         const val DAGGER_HILT = "2.38.1"
 
@@ -84,6 +86,7 @@ object LibraryDependency {
         const val ASSERTJ = "3.19.0"
         const val MOCKK = "1.11.0"
         const val ARCHCORE = "2.1.0"
+        const val TURBINE = "0.7.0"
     }
 
 }

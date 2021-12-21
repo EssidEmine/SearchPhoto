@@ -47,6 +47,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
             }
 
         }
+        mainViewModel.getData()
     }
 
 }
