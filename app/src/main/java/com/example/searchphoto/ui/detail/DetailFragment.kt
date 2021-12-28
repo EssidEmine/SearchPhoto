@@ -1,12 +1,23 @@
 package com.example.searchphoto.ui.detail
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import com.example.searchphoto.databinding.FragmentDetailBinding
-import com.example.searchphoto.ui.base.BaseFragment
+import android.view.ViewGroup
+import androidx.compose.material.Text
+import androidx.compose.ui.platform.ComposeView
+import androidx.fragment.app.Fragment
 
-class DetailFragment : BaseFragment<FragmentDetailBinding>() {
-    override fun init(view: View, savedInstanceState: Bundle?) {
+class DetailFragment :   Fragment() {
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return ComposeView(requireContext()).apply {
+            setContent {
+                Text(text = "Hello world.")
+            }
+        }
     }
 }

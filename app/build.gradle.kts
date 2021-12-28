@@ -34,6 +34,12 @@ android {
 
     buildFeatures {
         viewBinding = true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.1.0-rc02" // THIS ONE is important
+
     }
 
     compileOptions {
@@ -42,6 +48,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
+
     }
 }
 
@@ -56,21 +63,37 @@ dependencies {
     implementation(LibraryDependency.design)
     implementation(LibraryDependency.constraintlayout)
     implementation(LibraryDependency.activityKtx)
-    implementation (LibraryDependency.fragmentKtx)
+    implementation(LibraryDependency.fragmentKtx)
     implementation(LibraryDependency.recyclerview)
     implementation(LibraryDependency.picasso)
     implementation(LibraryDependency.Network.retrofit2)
     implementation(LibraryDependency.Test.junitParams)
-
+    //room
     implementation(LibraryDependency.roomRuntime)
     implementation(LibraryDependency.roomKtx)
     kapt(LibraryDependency.roomCompiler)
 
-    implementation (LibraryDependency.fragmentNavKtx)
+    //navigation
+    implementation(LibraryDependency.fragmentNavKtx)
     implementation(LibraryDependency.navigation)
 
+    //hilt
     implementation(LibraryDependency.daggerHilt)
     kapt(LibraryDependency.daggerHiltCompiler)
+
+    //Compose
+    implementation("androidx.compose.ui:ui:1.0.5")
+    // Integration with activities
+    implementation("androidx.activity:activity-compose:1.3.1")
+    // Compose Material Design
+    implementation("androidx.compose.material:material:1.0.5")
+    // Animations
+    implementation("androidx.compose.animation:animation:1.0.5")
+    // Tooling support (Previews, etc.)
+    implementation("androidx.compose.ui:ui-tooling:1.0.5")
+    // Integration with ViewModels
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0")
+
 
     testImplementation(LibraryDependency.Test.junit)
     androidTestImplementation(LibraryDependency.Test.junitExt)
@@ -81,7 +104,7 @@ dependencies {
     testImplementation(LibraryDependency.Test.mockkAndroid)
     testImplementation(LibraryDependency.Test.assertjCore)
     testImplementation(LibraryDependency.Test.kotlinCoroutinesTest)
-    testImplementation (LibraryDependency.Test.kotlinCoroutinesTurbineTest)
+    testImplementation(LibraryDependency.Test.kotlinCoroutinesTurbineTest)
 
     // region Projects implementation
 
