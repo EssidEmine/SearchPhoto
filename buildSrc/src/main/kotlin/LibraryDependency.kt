@@ -61,9 +61,9 @@ object LibraryDependency {
 
     private object Version {
         const val RETROFIT_2 = "2.9.0"
-        const val COROUTINES = "1.5.1"
+        const val COROUTINES = "1.6.4"
         const val CORE_KTX = "1.6.0"
-        const val DAGGER_HILT = "2.38.1"
+        const val DAGGER_HILT = "2.43.1"
 
         //Android
         const val APPCOMPAT = "1.3.0"
@@ -75,7 +75,7 @@ object LibraryDependency {
         const val RECYCLERVIEW = "1.1.0"
         const val PICASSO = "2.71828"
         const val FRAGMENT_KTX = "1.2.5"
-        const val NAVIGATION = "2.3.5"
+        const val NAVIGATION = "2.5.1"
 
 
         //Test

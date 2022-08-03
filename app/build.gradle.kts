@@ -10,7 +10,7 @@ plugins {
 
 android {
     compileSdkVersion(AndroidConfig.COMPILE_SDK_VERSION)
-    buildToolsVersion(BuildConfig.Versions.ANDROID_BUILD_TOOLS_VERSION)
+    buildToolsVersion = BuildConfig.Versions.ANDROID_BUILD_TOOLS_VERSION
 
     defaultConfig {
         applicationId = "com.example.searchphoto"
@@ -38,8 +38,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.1.0-rc02" // THIS ONE is important
-
+        kotlinCompilerExtensionVersion = "1.2.0"
     }
 
     compileOptions {
@@ -82,17 +81,22 @@ dependencies {
     kapt(LibraryDependency.daggerHiltCompiler)
 
     //Compose
-    implementation("androidx.compose.ui:ui:1.0.5")
+    implementation("androidx.compose.ui:ui:1.2.0")
     // Integration with activities
-    implementation("androidx.activity:activity-compose:1.3.1")
+    implementation("androidx.activity:activity-compose:1.5.1")
     // Compose Material Design
-    implementation("androidx.compose.material:material:1.0.5")
+    implementation("androidx.compose.material:material:1.2.0")
     // Animations
-    implementation("androidx.compose.animation:animation:1.0.5")
+    implementation("androidx.compose.animation:animation:1.2.0")
     // Tooling support (Previews, etc.)
-    implementation("androidx.compose.ui:ui-tooling:1.0.5")
+    implementation("androidx.compose.ui:ui-tooling:1.2.0")
     // Integration with ViewModels
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
+    //image loading
+    implementation("io.coil-kt:coil-compose:2.0.0-rc01")
+    //navigation
+    implementation("androidx.navigation:navigation-compose:2.5.1")
+
 
 
     testImplementation(LibraryDependency.Test.junit)

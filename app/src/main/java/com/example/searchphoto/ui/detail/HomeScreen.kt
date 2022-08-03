@@ -9,9 +9,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -25,17 +25,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import coil.annotation.ExperimentalCoilApi
-import coil.compose.rememberImagePainter
+import coil.compose.rememberAsyncImagePainter
 import com.example.searchphoto.R
 import com.example.searchphoto.ui.main.MainViewModel
 import com.example.searchphoto.ui.theme.*
 import data.DataState
-import kotlinx.coroutines.flow.MutableStateFlow
 import main.PhotosItem
 
-
-@ExperimentalCoilApi
 @ExperimentalFoundationApi
 @Composable
 fun HomeScreen(context: Context, mainViewModel: MainViewModel) {
@@ -214,8 +210,6 @@ fun DailyThought(
     }
 }
 
-
-@ExperimentalCoilApi
 @ExperimentalFoundationApi
 @Composable
 fun MainContent(
@@ -234,7 +228,7 @@ fun MainContent(
             Text(text = "This is your list", style = MaterialTheme.typography.h1)
 
             LazyVerticalGrid(
-                cells = GridCells.Adaptive(128.dp),
+                columns = GridCells.Adaptive(128.dp),
 
                 contentPadding = PaddingValues(
                     start = 12.dp,
@@ -253,7 +247,6 @@ fun MainContent(
     }
 }
 
-@ExperimentalCoilApi
 @Composable
 fun PhotosItemView(
     item: PhotosItem,
@@ -284,7 +277,7 @@ fun PhotosItemView(
                 .padding(15.dp)
         ) {
             Image(
-                painter = rememberImagePainter(item.url),
+                painter = rememberAsyncImagePainter(item.url),
                 contentDescription = null,
                 modifier = Modifier.size(128.dp)
             )
