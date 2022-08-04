@@ -15,6 +15,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.Response
 
 import retrofit2.Retrofit
@@ -35,6 +36,7 @@ class RetrofitNetworkModule {
             .writeTimeout(Config.readTimeout.toLong(), TimeUnit.MILLISECONDS)
             .connectTimeout(Config.connectTimeout.toLong(), TimeUnit.MILLISECONDS)
             .addInterceptor(NoConnectionInterceptor(appContext))
+            .addInterceptor(TokenInterceptor(appContext))
             .followRedirects(true)
         // add Cache
         //Add interceptors
@@ -50,13 +52,15 @@ class RetrofitNetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
     }
 
-    class NoConnectionInterceptor(private val appContext: Context): Interceptor {
+    class NoConnectionInterceptor(private val appContext: Context) : Interceptor {
 
         override fun intercept(chain: Interceptor.Chain): Response {
 
-            val connectivityManager = appContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-            val isConnectionOn  = if (android.os.Build.VERSION.SDK_INT >=
-                android.os.Build.VERSION_CODES.M) {
+            val connectivityManager =
+                appContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val isConnectionOn = if (android.os.Build.VERSION.SDK_INT >=
+                android.os.Build.VERSION_CODES.M
+            ) {
                 postAndroidMInternetCheck(connectivityManager)
             } else {
                 preAndroidMInternetCheck(connectivityManager)
@@ -70,7 +74,8 @@ class RetrofitNetworkModule {
         }
 
         private fun preAndroidMInternetCheck(
-            connectivityManager: ConnectivityManager): Boolean {
+            connectivityManager: ConnectivityManager
+        ): Boolean {
             val activeNetwork = connectivityManager.activeNetworkInfo
             if (activeNetwork != null) {
                 return (activeNetwork.type == ConnectivityManager.TYPE_WIFI ||
@@ -81,7 +86,8 @@ class RetrofitNetworkModule {
 
         @RequiresApi(Build.VERSION_CODES.M)
         private fun postAndroidMInternetCheck(
-            connectivityManager: ConnectivityManager): Boolean {
+            connectivityManager: ConnectivityManager
+        ): Boolean {
             val network = connectivityManager.activeNetwork
             val connection =
                 connectivityManager.getNetworkCapabilities(network)
@@ -91,6 +97,15 @@ class RetrofitNetworkModule {
                             connection.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR))
         }
 
+    }
+
+    class TokenInterceptor(private val appContext: Context) : Interceptor {
+        override fun intercept(chain: Interceptor.Chain): Response {
+            val tokenizedRequest: Request = chain.request().newBuilder()
+                .addHeader("Authorization", Config.token) // should call it from gradle configs
+                .build()
+            return chain.proceed(tokenizedRequest)
+        }
     }
 
 

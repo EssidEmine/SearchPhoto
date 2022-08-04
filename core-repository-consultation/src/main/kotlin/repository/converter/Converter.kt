@@ -2,30 +2,28 @@ package repository.converter
 
 import main.PhotosItem
 import model.SearchPhotosResponse
-import room.LocalSearchPhotos
 
 fun SearchPhotosResponse.toModel() = PhotosItem(
-    albumId = albumId,
-    id = id,
-    title = title,
-    url = url,
-    thumbnailUrl = thumbnailUrl
+    page = page,
+    per_page = per_page,
+    photos = photos.map {
+        it.toModel()
+    },
+    total_results = total_results,
+    next_page = next_page ?: ""
 )
 
-fun SearchPhotosResponse.toLocalModel() = LocalSearchPhotos(
-    albumId = albumId,
+fun SearchPhotosResponse.Photo.toModel() = PhotosItem.Photo(
     id = id,
-    title = title,
     url = url,
-    thumbnailUrl = thumbnailUrl
+    photographer = photographer,
+    src = PhotosItem.Photo.Src(
+        large = src.large,
+        medium = src.medium,
+        small = src.small
+    )
 )
 
 
-fun LocalSearchPhotos.toModel() = PhotosItem(
-    albumId = albumId,
-    id = id,
-    title = title,
-    url = url,
-    thumbnailUrl = thumbnailUrl
-)
+
 

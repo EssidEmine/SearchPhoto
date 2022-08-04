@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 import main.PhotosItem
 
 interface SearchPhotosRepository {
-    fun getPhotosSearch(): Flow<DataState<List<PhotosItem>>>
+    fun getPhotosSearch(search: String): Flow<DataState<PhotosItem>>
 }

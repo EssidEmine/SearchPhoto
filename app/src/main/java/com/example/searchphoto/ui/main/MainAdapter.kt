@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.searchphoto.R
 import com.example.searchphoto.databinding.PhotoItemBinding
 import com.squareup.picasso.Picasso
-import main.PhotosItem
+import main.PhotosItem.Photo as PhotosItem
 
 class MainAdapter : RecyclerView.Adapter<MainAdapter.PhotoViewHolder>() {
 
@@ -51,11 +51,12 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.PhotoViewHolder>() {
 
         fun bind(item: PhotosItem) {
 
-            Picasso.get().load(item.thumbnailUrl)
+            Picasso.get().load(item.src.medium)
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_foreground)
                 .into(binding.image)
 
+            binding.imageText.text = item.id.toString()
         }
     }
 

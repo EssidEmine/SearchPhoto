@@ -7,24 +7,24 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import data.DataState
 import kotlinx.coroutines.flow.*
 import main.PhotosItem
-import usecase.GetPhotosUseCase
+import repository.SearchPhotosRepository
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val getPhotos: GetPhotosUseCase,
+    private val getPhotosRepo: SearchPhotosRepository,
     private val dispatcherProvider: DispatcherProvider
 ) : ViewModel() {
 
-    private val _photosState: MutableStateFlow<DataState<List<PhotosItem>>> =
+    private val _getPicturesState: MutableStateFlow<DataState<PhotosItem>> =
         MutableStateFlow(DataState.Empty)
-    val picturesState: StateFlow<DataState<List<PhotosItem>>>
-        get() = _photosState
+    val getPicturesState: StateFlow<DataState<PhotosItem>>
+        get() = _getPicturesState
 
 
-    fun getData() {
-        getPhotos.getPhotosSearch().onEach { element ->
-            _photosState.value = element
+    fun getData(search: String) {
+        getPhotosRepo.getPhotosSearch(search).onEach { element ->
+            _getPicturesState.value = element
         }.flowOn(dispatcherProvider.io)
             .launchIn(viewModelScope)
     }
