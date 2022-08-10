@@ -23,7 +23,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
         }
 
         lifecycleScope.launchWhenStarted {
-            mainViewModel.getPicturesState.collect {
+            mainViewModel.picturesStateFlow.collect {
                 when (it) {
                     DataState.Empty -> Unit
                     is DataState.Error -> {
